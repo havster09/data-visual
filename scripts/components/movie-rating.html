@@ -1,0 +1,8 @@
+<span ng-repeat="entry in $ctrl.entries track by $index">
+    <span ng-click="$ctrl.setRating({ value: $index + 1})"
+          class="glyphicon {{entry}}">        
+    </span>
+</span>
+
+<p>{{$ctrl.greet}}</p>
+
