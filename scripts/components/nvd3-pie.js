@@ -43,7 +43,7 @@ dashboard.component("nvd3Pie", {
                 return Math.random() * 100;
             }
 
-            model.data.push({key:months[key] + " " + year, y: getData()});
+            model.data.push({key:months[key] + " " + model.year, y: getData()});
             if(model.data.length > 11) {
                 model.data.shift();
             }
