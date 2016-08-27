@@ -1,15 +1,8 @@
 dashboard.component("nvd3Realtime", {
     templateUrl:"scripts/components/nvd3-realtime.html",
     controller: function($scope) {
-        var model = $scope;
-        model.message = "you gonna have a heart attack";
-
-        model.colorFunction = function() {
-            return function(d, i) {
-                return '#E01B5D'
-            };
-        };
-
+        var model = this;
+        model.message = "another dimension";
 
         model.options = {
             chart: {
@@ -17,6 +10,7 @@ dashboard.component("nvd3Realtime", {
                 height: 400,
                 margin: {
                     top:20,
+
                     right: 20,
                     bottom: 40,
                     left: 55
@@ -36,11 +30,11 @@ dashboard.component("nvd3Realtime", {
                 },
                 color: function(d,i) {
                     /*var colors = d3.scale.category20().range();
-                    var rnd = Math.floor(Math.random() * colors.length);
-                    return colors[rnd];*/
+                     var rnd = Math.floor(Math.random() * colors.length);
+                     return colors[rnd];*/
 
                     var yVal = d.values[d.values.length-1].y;
-                    console.log(yVal);
+                    // console.log(yVal);
                     return (yVal < 0)?"red":"green";
                 }
             }

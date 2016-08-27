@@ -11,6 +11,7 @@ dashboard.component("dashboardApp", {
 
         {path:"/nvd3-quickstart", component: "nvd3Quickstart", name: "NvD3 Quickstart"},
         {path:"/nvd3-realtime", component: "nvd3Realtime", name: "NvD3 Realtime"},
+        {path:"/nvd3-pie", component: "nvd3Pie", name: "NvD3 Pie"},
 
         {path:"/nvd3-directives", component: "nvd3Directives", name: "NvD3 Directives"},
         {path:"/**", redirectTo:["List"]}
