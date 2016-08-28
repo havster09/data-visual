@@ -62,11 +62,11 @@ dashboard.component("nvd3Realtime", {
             }
 
             model.data[0].values.push({x:x, y: getProfit()});
-            if(model.data[0].values.length > 20) {
+            if(model.data[0].values.length > 50) {
                 model.data[0].values.shift();
             }
             x++;
             $scope.$apply();
-        }, 500)
+        }, 500);
     }
 });

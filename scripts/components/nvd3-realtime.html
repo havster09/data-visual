@@ -1,5 +1,6 @@
 <div>
-    <p>{{$ctrl.message}}</p>
-    <button ng-click="$ctrl.run=!$ctrl.run">Start / Stop</button>
     <nvd3 options="$ctrl.options" data="$ctrl.data"></nvd3>
+    <span style="cursor:pointer">
+        <a ng-click="$ctrl.run=!$ctrl.run">Start / Stop</a>
+    </span>
 </div>

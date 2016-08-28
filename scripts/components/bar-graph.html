@@ -1,6 +1,42 @@
-<div>
-    <span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="400" height="300">
+<div class="row">
+    <div class="col-lg-6">
+
+        <form role="form">
+
+            <div class="form-group">
+                <label>Height</label>
+                <input type="number" class="form-control" ng-model="$ctrl.specs.height">
+            </div>
+
+            <div class="form-group">
+                <label>Bar1</label>
+                <input type="number" class="form-control" ng-model="$ctrl.specs.bars[0].width">
+            </div>
+
+            <div class="form-group">
+                <label>Bar2</label>
+                <input type="number" class="form-control" ng-model="$ctrl.specs.bars[1].width">
+            </div>
+
+            <div class="form-group">
+                <label>Bar3</label>
+                <input  type="number" class="form-control" ng-model="$ctrl.specs.bars[2].width">
+            </div>
+
+            <div class="form-group">
+                <label>Color Override</label>
+                <select class="form-control" ng-change="$ctrl.colorOverride()" ng-model="$ctrl.colorMaster">
+                    <option value="red">red</option>
+                    <option value="green">green</option>
+                    <option value="blue">blue</option>
+                    <option value="yellow">yellow</option>
+                </select>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-lg-6">
+        <svg xmlns="http://www.w3.org/2000/svg" height="200">
             <g ng-repeat="bar in $ctrl.specs.bars">
                 <text x="0" ng-attr-y="{{((1 * $ctrl.specs.padding + $ctrl.specs.height) * $index) + ($ctrl.specs.height/2) + ($ctrl.specs.fontHeight/2)}}" text-anchor="start" style="font-family:arial; font-size:10pt">{{bar.text}}</text>
                 <rect ng-attr-x="{{$ctrl.specs.labelWidth}}" ng-attr-y="{{(1 * $ctrl.specs.padding + $ctrl.specs.height) * $index}}" ng-attr-fill="{{bar.color}}" ng-attr-width="{{bar.width}}" ng-attr-height="{{$ctrl.specs.height}}"></rect>
@@ -11,15 +47,11 @@
                   ng-attr-x="{{$ctrl.specs.labelWidth + gradient.offset}}"
                   ng-attr-y="{{((1 * $ctrl.specs.height + $ctrl.specs.padding) * $ctrl.specs.bars.length) + $ctrl.specs.fontHeight + 3}}" text-anchor="middle" style="font-family: arial; fontsize:10pt">{{gradient.text}}</text>
         </svg>
-    </span>
+    </div>
 </div>
 
-<div>
-    Height: <input type="number" ng-model="$ctrl.specs.height">
-    Color Override: <select ng-change="$ctrl.colorOverride()" ng-model="$ctrl.colorMaster">
-        <option value="red">red</option>
-        <option value="green">green</option>
-        <option value="blue">blue</option>
-        <option value="yellow">yellow</option>
-    </select>
-</div>
+
+
+
+
+

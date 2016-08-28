@@ -1,19 +1,30 @@
 dashboard.component("nvd3Pie", {
-    templateUrl:"scripts/components/nvd3-pie.html",
-    controller: function($scope) {
+    templateUrl: "scripts/components/nvd3-pie.html",
+    controller: function ($scope) {
         var model = this;
         model.message = "spinning bird kick";
 
+        model.yearComplete = false;
+
+        model.handleData = function () {
+            model.run = true;
+            model.yearComplete = false;
+        };
+
         model.options = {
             chart: {
-                type:'pieChart',
+                type: 'pieChart',
                 height: 500,
-                x: function(d) {return d.key;},
-                y: function(d) {return d.y;},
+                x: function (d) {
+                    return d.key;
+                },
+                y: function (d) {
+                    return d.y;
+                },
                 showLabels: true,
                 duration: 500,
                 labelThreshold: 0.01,
-                labelSunbeamLayout: true,
+                labelSunbeamLayout: false,
                 legend: {
                     margin: {
                         top: 5,
@@ -33,9 +44,8 @@ dashboard.component("nvd3Pie", {
         var key = 0;
 
 
-
-        var yearlyProfits = setInterval(function() {
-            if(!model.run) {
+        var yearlyProfits = setInterval(function () {
+            if (!model.run) {
                 return;
             }
 
@@ -43,13 +53,15 @@ dashboard.component("nvd3Pie", {
                 return Math.random() * 100;
             }
 
-            model.data.push({key:months[key] + " " + model.year, y: getData()});
-            if(model.data.length > 11) {
+            model.data.push({key: months[key].substr(0,3) + " " + model.year, y: getData()});
+            if (model.data.length > months.length) {
                 model.data.shift();
             }
             key++;
-            if(key > 11) {
+            if (key > months.length -1) {
                 model.run = false;
+                model.yearComplete = !model.yearComplete;
+
                 key = 0;
                 model.year++;
             }
