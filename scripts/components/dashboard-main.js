@@ -66,6 +66,8 @@ dashboard.component("dashboardMain", {
 
         {path:"/nvd3-quickstart", component: "nvd3Quickstart", name: "NvD3 Quickstart"},
         {path:"/nvd3-pie", component: "nvd3Pie", name: "NvD3 Pie"},
+        {path:"/nvd3-historic-bar", component: "nvd3HistoricBar", name: "NvD3 Historic Bar"},
+        {path:"/nvd3-discrete-bar", component: "nvd3DiscreteBar", name: "NvD3 Discrete Bar"},
         {path:"/nvd3-cumulative", component: "nvd3Cumulative", name: "NvD3 Cumulative"},
         {path:"/snap-svg", component: "snapSvg", name: "Snap Svg"},
 

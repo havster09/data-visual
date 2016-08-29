@@ -8,22 +8,26 @@ dashboard.component("snapSvg", {
 
         var saveAttributes = ['transform'];
 
-        Snap.plugin( function( Snap, Element, Paper, global ) {
-            Element.prototype.resetSVG = function() {
+        Snap.plugin(function (Snap, Element, Paper, global) {
+            Element.prototype.resetSVG = function () {
                 this.stop();
-                for( var a=0; a<saveAttributes.length; a++) {
-                    if( this.data( saveAttributes[a] ) ) {
-                        this.attr( saveAttributes[a], this.data( saveAttributes[a] ) );
-                    };
-                };
+                for (var a = 0; a < saveAttributes.length; a++) {
+                    if (this.data(saveAttributes[a])) {
+                        this.attr(saveAttributes[a], this.data(saveAttributes[a]));
+                    }
+                    ;
+                }
+                ;
             };
 
-            Element.prototype.storeAttributes = function() {
-                for( var a=0; a<saveAttributes.length; a++) {
-                    if( this.attr( saveAttributes[a]) ) {
-                        this.data( saveAttributes[a], this.attr( saveAttributes[a] ) );
-                    };
-                };
+            Element.prototype.storeAttributes = function () {
+                for (var a = 0; a < saveAttributes.length; a++) {
+                    if (this.attr(saveAttributes[a])) {
+                        this.data(saveAttributes[a], this.attr(saveAttributes[a]));
+                    }
+                    ;
+                }
+                ;
             };
 
         });
@@ -41,53 +45,44 @@ dashboard.component("snapSvg", {
 
         var g2 = g1.clone();
         var g3 = g1.clone();
+        var g4 = g1.clone();
 
-         g2.transform("t100,110");
-         g3.transform("t-100,110");
+        g1.remove();
 
-        var g1_o = g1.attr("transform");
+        g2.transform("t100,110");
+        g3.transform("t-100,110");
+
+        var g1_o = g4.attr("transform");
         var g2_o = g2.attr("transform");
         var g3_o = g3.attr("transform");
 
-        var hoverover1 = function () {
-            g1.animate({opacity: "0"}, 200, mina.linear);
-        };
-        var hoverout1 = function () {
-            g1.animate({opacity: "1"}, 200, mina.linear);
-        };
-
-        var hoverover2 = function () {
+        var anim2 = function () {
             g2.animate({opacity: "0", transform: g1_o}, 200, mina.linear);
-        };
-        var hoverout2 = function () {
-            g2.animate({opacity: "1", transform: g2_o}, 200, mina.linear);
-        };
-
-        var hoverover3 = function () {
             g3.animate({opacity: "0", transform: g1_o}, 200, mina.linear);
         };
-        var hoverout3 = function () {
-            g3.animate({opacity: "1", transform: g3_o}, 200, mina.linear);
-        };
 
-        g1.mouseover(hoverover1);
-        g1.mouseout(hoverout1);
+            var hoverover1 = function () {
+                anim2();
+            };
+            var hoverout1 = function () {
+                g4.animate({opacity: "1", transform: g1_o}, 200, mina.linear);
+                g2.animate({opacity: "1", transform: g2_o}, 200, mina.linear);
+                g3.animate({opacity: "1", transform: g3_o}, 200, mina.linear);
+            };
 
-        g2.mouseover(hoverover2);
-        g2.mouseout(hoverout2);
+            var gAll = s.group(g4,g2,g3);
 
-        g3.mouseover(hoverover3);
-        g3.mouseout(hoverout3);
+            gAll.hover(hoverover1, hoverout1);
 
 
-        /*var tux = Snap.load("svg/Revolver_icon.svg", function ( loadedFragment ) {
-         g.append( loadedFragment );
-         g.hover( hoverover, hoverout );
-         } );
+            /*var tux = Snap.load("svg/Revolver_icon.svg", function ( loadedFragment ) {
+             g.append( loadedFragment );
+             g.hover( hoverover, hoverout );
+             } );
 
-         var hoverover = function() { g.animate({ opacity: "0" }, 500, mina.linear ) };
-         var hoverout = function() { g.animate({ opacity: "1" }, 500, mina.linear ) };*/
-    }
-});
+             var hoverover = function() { g.animate({ opacity: "0" }, 500, mina.linear ) };
+             var hoverout = function() { g.animate({ opacity: "1" }, 500, mina.linear ) };*/
+        }
+    });
 
 
