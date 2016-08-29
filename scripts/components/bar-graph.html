@@ -36,7 +36,7 @@
 
     </div>
     <div class="col-lg-6">
-        <svg xmlns="http://www.w3.org/2000/svg" height="200">
+        <svg xmlns="http://www.w3.org/2000/svg" style="max-height:200px">
             <g ng-repeat="bar in $ctrl.specs.bars">
                 <text x="0" ng-attr-y="{{((1 * $ctrl.specs.padding + $ctrl.specs.height) * $index) + ($ctrl.specs.height/2) + ($ctrl.specs.fontHeight/2)}}" text-anchor="start" style="font-family:arial; font-size:10pt">{{bar.text}}</text>
                 <rect ng-attr-x="{{$ctrl.specs.labelWidth}}" ng-attr-y="{{(1 * $ctrl.specs.padding + $ctrl.specs.height) * $index}}" ng-attr-fill="{{bar.color}}" ng-attr-width="{{bar.width}}" ng-attr-height="{{$ctrl.specs.height}}"></rect>

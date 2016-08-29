@@ -11,10 +11,21 @@ dashboard.component("dashboardMain", {
     bindings: {
       value:"@"
     },
-    controller: function($scope, $http, $interval) {
+    controller: function($scope, $http) {
         var model = this;
         model.parentGreet = "You shot me in the a";
         model.message = "there is no tomorrow";
+
+
+        model.specs1 = {
+            currentValue: 45, centerX: 300, centerY: 300, radius: 200,
+            maxValue: 180, gradientInterval: 10, gradients: []
+        };
+        model.specs2 = {
+            currentValue: 85, centerX: 300, centerY: 300, radius: 200,
+            maxValue: 180, gradientInterval: 10, gradients: []
+        };
+
         model.movies = [];
         model.changeMessage = function() {
             model.message = "Bye Bi";
@@ -56,6 +67,7 @@ dashboard.component("dashboardMain", {
         {path:"/nvd3-quickstart", component: "nvd3Quickstart", name: "NvD3 Quickstart"},
         {path:"/nvd3-pie", component: "nvd3Pie", name: "NvD3 Pie"},
         {path:"/nvd3-cumulative", component: "nvd3Cumulative", name: "NvD3 Cumulative"},
+        {path:"/snap-svg", component: "snapSvg", name: "Snap Svg"},
 
         {path:"/nvd3-directives", component: "nvd3Directives", name: "NvD3 Directives"},
         {path:"/**", redirectTo:["Dashboard Main"]}
