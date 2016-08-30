@@ -69,6 +69,12 @@ dashboard.component("dashboardMain", {
         {path:"/nvd3-historic-bar", component: "nvd3HistoricBar", name: "NvD3 Historic Bar"},
         {path:"/nvd3-discrete-bar", component: "nvd3DiscreteBar", name: "NvD3 Discrete Bar"},
         {path:"/nvd3-cumulative", component: "nvd3Cumulative", name: "NvD3 Cumulative"},
+
+        {path:"/d3-sitepoint", component: "d3Sitepoint", name: "D3 Sitepoint"},
+        {path:"/d3-tutorial/:id", component: "d3Tutorial", name: "D3 Tutorial"},
+
+
+
         {path:"/snap-svg", component: "snapSvg", name: "Snap Svg"},
 
         {path:"/nvd3-directives", component: "nvd3Directives", name: "NvD3 Directives"},
