@@ -3,6 +3,11 @@ dashboard.component("d3Tutorial", {
     controller: function ($scope) {
         var model = this;
 
+        function type(d) {
+            d.value = +d.value; // coerce to number
+            return d;
+        }
+
         model.$routerOnActivate = function (next, prev) {
             model.id = next.params.id;
             console.log(model.id);
@@ -17,7 +22,7 @@ dashboard.component("d3Tutorial", {
                 var chart = d3.select(".chart")
                     .attr("width", width);
 
-                d3.tsv("assets/data.tsv", type, function(error, data) {
+                d3.tsv("assets/data_s.tsv", type, function(error, data) {
                     x.domain([0, d3.max(data, function(d) { return d.value; })]);
 
                     chart.attr("height", barHeight * data.length);
@@ -37,11 +42,6 @@ dashboard.component("d3Tutorial", {
                         .attr("dy", ".35em")
                         .text(function(d) { return d.value; });
                 });
-
-                function type(d) {
-                    d.value = +d.value; // coerce to number
-                    return d;
-                }
             }
             else {
                 var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -99,11 +99,6 @@ dashboard.component("d3Tutorial", {
                         .attr("y", function(d) { return y(d.frequency); })
                         .attr("height", function(d) { return height - y(d.frequency); });
                 });
-
-                function type(d) {
-                    d.frequency = +d.frequency;
-                    return d;
-                }
             }
 
         };
